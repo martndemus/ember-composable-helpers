@@ -17,6 +17,26 @@ To install:
 ember install ember-functional-helpers
 ```
 
+## Configuration
+This addon performs optional tree-shaking – you can specify which helpers to whitelist or blacklist using `only` or `except` within your `config/environment.js`:
+
+```js
+module.exports = function(environment) {
+  var ENV = {
+    'ember-functional-helpers': {
+      only: ['inc', 'dec', 'pipe'],
+      except: ['pipe', 'filter-by']
+    }
+  };
+```
+
+Both `only` and `except` can be safely used together (the addon computes the diff), although it's best if you only use one for your own sanity.
+
+```js
+except: ['pipe'] // imports all helpers except `pipe`
+only: ['pipe'] // imports only `pipe`
+```
+
 ## Available helpers
 
 * [Action](#action-helpers)
